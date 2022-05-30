@@ -42,6 +42,11 @@ Here is the diagram of relation between classes
 ![Diagrama de realciones](https://user-images.githubusercontent.com/69442805/171068270-d32b1faf-5358-4c8b-84d7-907cbdb74eed.png)
 
 
+### Swagger Screen shoot
+
+![image](https://user-images.githubusercontent.com/69442805/171069084-7bd7a222-15fa-4cbc-9359-aae38cb80fcd.png)
+
+
 ## Setup
 To run this project, install it locally, open it into your IDE, go to the properties file and then
 change the database configuration like driver, Url, db name, user and password. Finally, run it as any other java
