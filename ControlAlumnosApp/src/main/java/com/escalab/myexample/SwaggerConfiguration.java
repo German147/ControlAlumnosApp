@@ -18,8 +18,8 @@ public class SwaggerConfiguration {
     public static final Contact DEFAULT_CONTACT = new Contact("Escalab", "https://www.laescala.cl",
             "mchamorro@laescala.cl");
 
-    public static final ApiInfo DEFAULT_API_INFO = new ApiInfo("Mediapp Api Documentation",
-            "Mediapp Api Documentation", "1.0", "PREMIUM", DEFAULT_CONTACT, "Apache 2.0",
+    public static final ApiInfo DEFAULT_API_INFO = new ApiInfo("Barrera Germán - Java Engineer - Tutor Josse Niño" ,
+            "ESCALAB ACADEMY - SPRING-BOOT COURSE  -  Mediapp Api Documentation", "1.0", "PREMIUM", DEFAULT_CONTACT, "Apache 2.0",
             "http://www.apache.org/licenses/LICENSE-2.0", new ArrayList<VendorExtension>());
 
     @Bean

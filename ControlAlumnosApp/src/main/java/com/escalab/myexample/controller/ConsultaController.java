@@ -1,5 +1,6 @@
 package com.escalab.myexample.controller;
 
+import com.escalab.myexample.dto.Consulta_DTO;
 import com.escalab.myexample.dto.Consulta_Lista_Llamado_de_Atencion_DTO;
 import com.escalab.myexample.dto.RespuestaDTO;
 import com.escalab.myexample.entity.Archivo;
@@ -8,6 +9,7 @@ import com.escalab.myexample.exceptions.ConsultaNotFoundException;
 import com.escalab.myexample.service.IArchivoService;
 import com.escalab.myexample.service.IConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +20,12 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/consultas")
@@ -92,6 +98,40 @@ public class ConsultaController {
         rpta = serviceArchivo.guardar(ar);
 
         return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/hateoas", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Consulta_DTO> listHateoas() {
+        List<Consulta> consultaList = new ArrayList<>();
+        List<Consulta_DTO> consulta_dtoList = new ArrayList<>();
+        consultaList = service.findAll();
+
+        for (Consulta consulta : consultaList) {
+            Consulta_DTO cndto = new Consulta_DTO();
+            cndto.setIdColsulta_llamado_atencion(consulta.getIdConsulta());
+            cndto.setAlumno(consulta.getAlumno());
+            cndto.setApoderado(consulta.getApoderado());
+            cndto.setProfesor(consulta.getProfesor());
+
+            ControllerLinkBuilder linkto = linkTo(methodOn(ConsultaController.class).findbyId((consulta.getIdConsulta())));
+            cndto.add(linkto.withSelfRel());
+            consulta_dtoList.add(cndto);
+
+            ControllerLinkBuilder linkToAlumno = linkTo(methodOn(AlumnoController.class).findById((consulta.getIdConsulta())));
+            cndto.add(linkToAlumno.withSelfRel());
+            consulta_dtoList.add(cndto);
+
+            ControllerLinkBuilder linkToProfesor = linkTo(methodOn(ProfesorController.class).findById((consulta.getIdConsulta())));
+            cndto.add(linkToProfesor.withSelfRel());
+            consulta_dtoList.add(cndto);
+
+            ControllerLinkBuilder linkToApoderado = linkTo(methodOn(ApoderadoController.class).findById((consulta.getIdConsulta())));
+            cndto.add(linkToApoderado.withSelfRel());
+            consulta_dtoList.add(cndto);
+
+
+        }
+        return  consulta_dtoList;
     }
 
 }
