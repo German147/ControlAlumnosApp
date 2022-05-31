@@ -109,7 +109,7 @@ public class ProfesorController {
             @ApiResponse(code = 200, message = "Peticón OK")})
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deleteById(@PathVariable("id") Integer id) {
-        return profesorService.deleteProfesor(id);
+        return profesorService.deleteById(id);
     }
 
     @GetMapping("/pageable")

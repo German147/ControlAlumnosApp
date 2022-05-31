@@ -110,7 +110,7 @@ public class ApoderadoController {
             @ApiResponse(code = 200, message = "Peticón OK")})
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Object> deleteById(@PathVariable("id") Integer id) {
-        return apoderadoService.deleteApoderado(id);
+        return apoderadoService.deleteById(id);
     }
 
     @GetMapping("/pageable")

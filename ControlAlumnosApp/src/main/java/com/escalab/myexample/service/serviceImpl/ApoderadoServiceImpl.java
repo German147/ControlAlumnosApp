@@ -24,7 +24,6 @@ public class ApoderadoServiceImpl implements IApoderadoService {
         this.apoderadoRepository = apoderadoRepository;
     }
 
-
     @Override
     public Apoderado create(Apoderado apoderado) {
         return apoderadoRepository.save(apoderado);
@@ -61,15 +60,6 @@ public class ApoderadoServiceImpl implements IApoderadoService {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        boolean exists = apoderadoRepository.existsById(id);
-        if (!exists) {
-            throw new IllegalStateException("El apoderado con el id " + id + " no existe en nuestra base de datos");
-        }
-        apoderadoRepository.deleteById(id);
-    }
-
-    @Override
     public List<Apoderado> findAllByName(String name) {
         return apoderadoRepository.findAllByNombre(name);
     }
@@ -80,7 +70,7 @@ public class ApoderadoServiceImpl implements IApoderadoService {
     }
 
     @Override
-    public ResponseEntity<Object> deleteApoderado(Integer id) {
+    public ResponseEntity<Object> deleteById(Integer id) {
         Optional<Apoderado> apoderado = apoderadoRepository.findById(id);
         if (apoderado.isPresent()) {
             apoderadoRepository.delete(apoderado.get());

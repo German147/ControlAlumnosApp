@@ -13,5 +13,4 @@ public interface IAlumnosService extends ICRUD<Alumno>{
 
     Page<Alumno> listPageable(Pageable pageable);
 
-    ResponseEntity<Object> deleteAlumno(Integer id);
 }

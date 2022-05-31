@@ -13,6 +13,4 @@ public interface IProfesorService extends ICRUD<Profesor> {
 
     Page<Profesor> listPageable(Pageable pageable);
 
-    ResponseEntity<Object> deleteProfesor(Integer id);
-
 }

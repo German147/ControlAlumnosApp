@@ -13,6 +13,4 @@ public interface IApoderadoService extends ICRUD<Apoderado>{
 
     Page<Apoderado> listPageable(Pageable pageable);
 
-    ResponseEntity<Object> deleteApoderado(Integer id);
-
 }

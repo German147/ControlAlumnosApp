@@ -62,15 +62,6 @@ public class AlumnoServiceImpl implements IAlumnosService {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        boolean exists = alumnoRepository.existsById(id);
-        if (!exists) {
-            throw new IllegalStateException("El alumno con el id " + id + " no existe en nuestra base de datos");
-        }
-        alumnoRepository.deleteById(id);
-    }
-
-    @Override
     public List<Alumno> findAllByName(String name) {
         return alumnoRepository.findAllByNombre(name);
     }
@@ -81,7 +72,7 @@ public class AlumnoServiceImpl implements IAlumnosService {
     }
 
     @Override
-    public ResponseEntity<Object> deleteAlumno(Integer id) {
+    public ResponseEntity<Object> deleteById(Integer id) {
         Optional<Alumno> alumno = alumnoRepository.findById(id);
         if (alumno.isPresent()) {
             alumnoRepository.delete(alumno.get());

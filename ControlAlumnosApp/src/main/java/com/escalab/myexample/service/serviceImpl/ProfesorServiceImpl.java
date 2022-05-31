@@ -36,15 +36,6 @@ public class ProfesorServiceImpl implements IProfesorService {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        boolean exists = profesorRepository.existsById(id);
-        if (!exists) {
-            throw new IllegalStateException("El profesor con el id " + id + " no existe en nuestra base de datos");
-        }
-        profesorRepository.deleteById(id);
-    }
-
-    @Override
     public List<Profesor> findAllByName(String name) {
         return profesorRepository.findAllByNombre(name);
     }
@@ -52,17 +43,6 @@ public class ProfesorServiceImpl implements IProfesorService {
     @Override
     public Page<Profesor> listPageable(Pageable pageable) {
         return profesorRepository.findAll(pageable);
-    }
-
-    @Override
-    public ResponseEntity<Object> deleteProfesor(Integer id) {
-        Optional<Profesor> profesor = profesorRepository.findById(id);
-        if (profesor.isPresent()) {
-            profesorRepository.delete(profesor.get());
-            return new ResponseEntity<>(HttpStatus.OK);
-        } else {
-            throw new ProfesorNotFoundException("El Profesor no fue encontrado");
-        }
     }
 
     @Override
@@ -83,5 +63,16 @@ public class ProfesorServiceImpl implements IProfesorService {
             }
         }
         return updatedProfesor;
+    }
+
+    @Override
+    public ResponseEntity<Object> deleteById(Integer id) {
+        Optional<Profesor> profesor = profesorRepository.findById(id);
+        if (profesor.isPresent()) {
+            profesorRepository.delete(profesor.get());
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            throw new ProfesorNotFoundException("El Profesor no fue encontrado");
+        }
     }
 }

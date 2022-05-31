@@ -1,5 +1,7 @@
 package com.escalab.myexample.service;
 
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
 
 public interface ICRUD<T> {
@@ -12,6 +14,7 @@ public interface ICRUD<T> {
 
     T findById(Integer id);
 
-    void deleteById(Integer id);
+    ResponseEntity<Object> deleteById(Integer id);
+
 
 }
