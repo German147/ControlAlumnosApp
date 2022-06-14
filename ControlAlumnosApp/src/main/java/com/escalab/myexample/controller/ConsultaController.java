@@ -28,7 +28,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @RestController
-@RequestMapping("/consultas")
+@RequestMapping("/consultasDeAlumnos")
 public class ConsultaController {
 
     @Autowired
