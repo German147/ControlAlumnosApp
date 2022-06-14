@@ -1,14 +1,14 @@
 package com.escalab.myexample.dto;
 
 import com.escalab.myexample.entity.Consulta;
-import com.escalab.myexample.entity.Llamados_de_Atencion;
+import com.escalab.myexample.entity.LlamadosDeAtencion;
 
 import java.util.List;
 
 public class Consulta_Lista_Llamado_de_Atencion_DTO {
 
     private Consulta consulta;
-    private List<Llamados_de_Atencion> llamadosDeAtencionList;
+    private List<LlamadosDeAtencion> llamadosDeAtencionList;
 
     public Consulta getConsulta() {
         return consulta;
@@ -18,11 +18,11 @@ public class Consulta_Lista_Llamado_de_Atencion_DTO {
         this.consulta = consulta;
     }
 
-    public List<Llamados_de_Atencion> getLlamadosDeAtencionList() {
+    public List<LlamadosDeAtencion> getLlamadosDeAtencionList() {
         return llamadosDeAtencionList;
     }
 
-    public void setLlamadosDeAtencionList(List<Llamados_de_Atencion> llamadosDeAtencionList) {
+    public void setLlamadosDeAtencionList(List<LlamadosDeAtencion> llamadosDeAtencionList) {
         this.llamadosDeAtencionList = llamadosDeAtencionList;
     }
 }

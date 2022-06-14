@@ -29,7 +29,7 @@ public class Consulta {
     private Profesor profesor;
 
     @OneToMany(mappedBy = "consulta", cascade = { CascadeType.ALL }, orphanRemoval = true)
-    private List<DetalleConsulta_Apercivimiento> detalleApercivimiento;
+    private List<DetalleConsultaApercivimiento> detalleApercivimiento;
 
     public Consulta() {
     }
@@ -37,7 +37,7 @@ public class Consulta {
     public Consulta(Integer idConsulta, LocalDateTime fecha,
                     Alumno alumno, Apoderado apoderado,
                     Profesor profesor,
-                    List<DetalleConsulta_Apercivimiento> detalleApercivimiento) {
+                    List<DetalleConsultaApercivimiento> detalleApercivimiento) {
         this.idConsulta = idConsulta;
         this.fecha = fecha;
         this.alumno = alumno;
@@ -86,11 +86,11 @@ public class Consulta {
         this.profesor = profesor;
     }
 
-    public List<DetalleConsulta_Apercivimiento> getDetalleApercivimiento() {
+    public List<DetalleConsultaApercivimiento> getDetalleApercivimiento() {
         return detalleApercivimiento;
     }
 
-    public void setDetalleApercivimiento(List<DetalleConsulta_Apercivimiento> detalleApercivimiento) {
+    public void setDetalleApercivimiento(List<DetalleConsultaApercivimiento> detalleApercivimiento) {
         this.detalleApercivimiento = detalleApercivimiento;
     }
 }

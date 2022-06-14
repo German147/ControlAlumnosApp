@@ -5,13 +5,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "consultaLlamadoDeAtencion")
 @IdClass(ConsultaLlamadoAtencionPK.class)
-public class Consulta_Llamado_De_Atencion {
+public class ConsultaLlamadoDeAtencion {
 
     @Id
     private Consulta consulta;
 
     @Id
-    private Llamados_de_Atencion llamadosdeAtencion;
+    private LlamadosDeAtencion llamadosdeAtencion;
 
     public Consulta getConsulta() {
         return consulta;
@@ -21,11 +21,11 @@ public class Consulta_Llamado_De_Atencion {
         this.consulta = consulta;
     }
 
-    public Llamados_de_Atencion getLlamadosdeAtencion() {
+    public LlamadosDeAtencion getLlamadosdeAtencion() {
         return llamadosdeAtencion;
     }
 
-    public void setLlamadosdeAtencion(Llamados_de_Atencion llamadosdeAtencion) {
+    public void setLlamadosdeAtencion(LlamadosDeAtencion llamadosdeAtencion) {
         this.llamadosdeAtencion = llamadosdeAtencion;
     }
 }

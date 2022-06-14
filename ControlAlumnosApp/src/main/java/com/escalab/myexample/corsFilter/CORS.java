@@ -22,6 +22,7 @@ public class CORS implements Filter {
             throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
+        //en lugar del asterisco puedo poner una pagina www ... para indicart que esta permitido ese origen de ingreso.
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Methods", "DELETE, GET, OPTIONS, PATCH, POST, PUT");
         response.setHeader("Access-Control-Max-Age", "3600");

@@ -53,7 +53,7 @@ public class ConsultaController {
         return new ResponseEntity<Consulta>(obj, HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping("/registerConsultaAlumno")
     public ResponseEntity<Object> registerConsulta(@Valid @RequestBody Consulta_Lista_Llamado_de_Atencion_DTO consultaLlamadosDTO) {
         Consulta obj = service.registrarTransaccional(consultaLlamadosDTO);
         //consultas/4
@@ -61,7 +61,7 @@ public class ConsultaController {
         return ResponseEntity.created(location).build();
     }
 
-    @PutMapping
+    @PutMapping("/updateConsulta")
     public ResponseEntity<Consulta> updateConsulta(@Valid @RequestBody Consulta consulta, Integer id) {
         Consulta obj = service.update(consulta, id);
         return new ResponseEntity<Consulta>(obj, HttpStatus.OK);

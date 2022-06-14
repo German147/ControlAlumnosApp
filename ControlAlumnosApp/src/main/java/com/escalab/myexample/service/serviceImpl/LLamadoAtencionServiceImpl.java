@@ -1,7 +1,6 @@
 package com.escalab.myexample.service.serviceImpl;
 
-import com.escalab.myexample.entity.Alumno;
-import com.escalab.myexample.entity.Llamados_de_Atencion;
+import com.escalab.myexample.entity.LlamadosDeAtencion;
 import com.escalab.myexample.exceptions.AlumnoNotFoundException;
 import com.escalab.myexample.exceptions.LlamadosAtencionNotFoundException;
 import com.escalab.myexample.repository.ILlamadoAtencionRepository;
@@ -23,15 +22,15 @@ public class LLamadoAtencionServiceImpl implements ILlamadoAtencionService {
     ILlamadoAtencionRepository llamadoAtencionRepository;
 
     @Override
-    public Llamados_de_Atencion create(Llamados_de_Atencion llamadosDeAtencion) {
+    public LlamadosDeAtencion create(LlamadosDeAtencion llamadosDeAtencion) {
         return llamadoAtencionRepository.save(llamadosDeAtencion);
     }
 
     @Override
-    public Llamados_de_Atencion update(Llamados_de_Atencion llamadosDeAtencion, Integer id) {
-        Llamados_de_Atencion updateLlamadoAt = new Llamados_de_Atencion();
+    public LlamadosDeAtencion update(LlamadosDeAtencion llamadosDeAtencion, Integer id) {
+        LlamadosDeAtencion updateLlamadoAt = new LlamadosDeAtencion();
         if (id != null && id > 0) {
-            Optional<Llamados_de_Atencion> po = llamadoAtencionRepository.findById(id);
+            Optional<LlamadosDeAtencion> po = llamadoAtencionRepository.findById(id);
             if (po.isPresent()) {
                 llamadosDeAtencion.setLlamadoDeAtencion_id(id);
                 updateLlamadoAt = llamadoAtencionRepository.save(llamadosDeAtencion);
@@ -44,13 +43,13 @@ public class LLamadoAtencionServiceImpl implements ILlamadoAtencionService {
     }
 
     @Override
-    public List<Llamados_de_Atencion> findAll() {
+    public List<LlamadosDeAtencion> findAll() {
         return llamadoAtencionRepository.findAll();
     }
 
     @Override
-    public Llamados_de_Atencion findById(Integer id) {
-        Optional<Llamados_de_Atencion> llamadAt = llamadoAtencionRepository.findById(id);
+    public LlamadosDeAtencion findById(Integer id) {
+        Optional<LlamadosDeAtencion> llamadAt = llamadoAtencionRepository.findById(id);
         if (llamadAt.isPresent()) {
             return llamadAt.get();
         } else {
@@ -60,7 +59,7 @@ public class LLamadoAtencionServiceImpl implements ILlamadoAtencionService {
 
     @Override
     public ResponseEntity<Object> deleteById(Integer id) {
-        Optional<Llamados_de_Atencion> llamadoAt = llamadoAtencionRepository.findById(id);
+        Optional<LlamadosDeAtencion> llamadoAt = llamadoAtencionRepository.findById(id);
         if (llamadoAt.isPresent()) {
             llamadoAtencionRepository.delete(llamadoAt.get());
             return new ResponseEntity<>(HttpStatus.OK);
@@ -70,7 +69,7 @@ public class LLamadoAtencionServiceImpl implements ILlamadoAtencionService {
     }
 
     @Override
-    public Page<Llamados_de_Atencion> listLlamadoAtencionPageable(Pageable pageable) {
+    public Page<LlamadosDeAtencion> listLlamadoAtencionPageable(Pageable pageable) {
         return llamadoAtencionRepository.findAll(pageable);
     }
 

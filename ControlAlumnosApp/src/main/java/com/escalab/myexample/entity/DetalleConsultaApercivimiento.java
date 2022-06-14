@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "detalleDeLaConsulta")
-public class DetalleConsulta_Apercivimiento {
+public class DetalleConsultaApercivimiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idDetalleConsulta;

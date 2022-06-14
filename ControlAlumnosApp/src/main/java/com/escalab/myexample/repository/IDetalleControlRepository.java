@@ -1,7 +1,7 @@
 package com.escalab.myexample.repository;
 
-import com.escalab.myexample.entity.DetalleConsulta_Apercivimiento;
+import com.escalab.myexample.entity.DetalleConsultaApercivimiento;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IDetalleControlRepository extends JpaRepository<DetalleConsulta_Apercivimiento, Integer> {
+public interface IDetalleControlRepository extends JpaRepository<DetalleConsultaApercivimiento, Integer> {
 }

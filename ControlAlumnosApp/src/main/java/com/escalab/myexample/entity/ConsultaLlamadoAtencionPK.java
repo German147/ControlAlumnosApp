@@ -11,7 +11,7 @@ public class ConsultaLlamadoAtencionPK implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_llamadoAtencion", nullable = false)
-    private Llamados_de_Atencion llamadosdeAtencion;
+    private LlamadosDeAtencion llamadosdeAtencion;
 
     @ManyToOne
     @JoinColumn(name = "id_consulta", nullable = false)
