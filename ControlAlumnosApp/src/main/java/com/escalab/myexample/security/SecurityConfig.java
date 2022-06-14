@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -35,17 +34,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Value("${security.security-realm}")
 	private String securityRealm;
 	
-	
-	// Beans
-	
 	@Autowired	
 	private UserDetailsService userDetailsService;
 	
 	@Autowired
 	private DataSource dataSource;
-	
-	@Autowired
-	private BCryptPasswordEncoder bcrypt;
+
+//	@Autowired
+//	private BCryptPasswordEncoder bcrypt;
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -59,10 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManager();
 	}
 	
-	@Autowired
-	public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(bcrypt);
-	}
+//	@Autowired
+//	public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(userDetailsService).passwordEncoder(bcrypt);
+//	}
 	
 	protected void configure(HttpSecurity http) throws Exception {
 		http
