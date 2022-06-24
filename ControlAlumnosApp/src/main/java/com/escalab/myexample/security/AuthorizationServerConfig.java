@@ -18,51 +18,51 @@ import java.util.Arrays;
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-	
-	
+
+
 	@Value("${security.jwt.client-id}")
 	private String clientId;
-	
+
 	@Value("${security.jwt.client-secret}")
 	private String clientSecret;
-	
+
 	@Value("${security.jwt.grant-type}")
 	private String grantType;
-	
+
 	@Value("${security.jwt.scope-read}")
 	private String scopeRead;
-	
+
 	@Value("${security.jwt.scope-write}")
 	private String scopeWrite = "write";
-	
+
 	@Value("${security.jwt.resource-ids}")
 	private String resourceIds;
-	
+
 	// Beans
-	
+
 	@Autowired
 	private TokenStore tokenStore;
-	
+
 	@Autowired
 	private JwtAccessTokenConverter accessTokenConverter;
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
-	
+
 	@Override
 	public void configure(ClientDetailsServiceConfigurer configurer) throws Exception {
 		configurer.inMemory().withClient(clientId).secret(bcrypt.encode(clientSecret)).authorizedGrantTypes(grantType, "refresh_token")
 		.scopes(scopeRead, scopeWrite).resourceIds(resourceIds).accessTokenValiditySeconds(900)
 		.refreshTokenValiditySeconds(0);
 	}
-	
+
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		TokenEnhancerChain enhancerChain = new TokenEnhancerChain();
 		enhancerChain.setTokenEnhancers(Arrays.asList(accessTokenConverter));
 		endpoints.tokenStore(tokenStore).accessTokenConverter(accessTokenConverter).tokenEnhancer(enhancerChain).authenticationManager(authenticationManager);
-	}	
+	}
 }

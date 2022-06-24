@@ -37,7 +37,7 @@ public class LlamadoDeAtencionController {
             @ApiResponse(code = 404, message = "Not found, no encontrado"),
             @ApiResponse(code = 405, message = "No se encontraron llamados de atencion en la BD"),
             @ApiResponse(code = 200, message = "Peticón OK")})
-    @GetMapping("/llamadosDeAtencion")
+    @GetMapping("/findAllLlamadosDeAtencion")
     public @ResponseBody
     List<LlamadosDeAtencion> findAllLlamadosDeatencion(){
         return lLamadoAtencionService.findAll();
@@ -64,7 +64,7 @@ public class LlamadoDeAtencionController {
     @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Bad request o datos no enviados correctamente"),
             @ApiResponse(code = 200, message = "Peticón OK")})
-    @PostMapping("/save")
+    @PostMapping("/saveLlamadoAtencion")
     public LlamadosDeAtencion create(@RequestBody LlamadosDeAtencion llamadoDeAtencion) {
         return lLamadoAtencionService.create(llamadoDeAtencion);
     }

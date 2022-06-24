@@ -1,7 +1,7 @@
 package com.escalab.myexample.controller;
 
 import com.escalab.myexample.entity.Usuario;
-import com.escalab.myexample.entity.Usuario;
+
 import com.escalab.myexample.service.serviceImpl.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

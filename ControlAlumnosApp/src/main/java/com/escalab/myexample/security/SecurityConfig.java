@@ -24,42 +24,42 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Value("${security.signing-key}")
 	private String signinKey;
-	
+
 	@Value("${security.encoding-strength}")
 	private Integer encodingStrength;
-	
+
 	@Value("${security.security-realm}")
 	private String securityRealm;
-	
-	@Autowired	
+
+	@Autowired
 	private UserDetailsService userDetailsService;
-	
+
 	@Autowired
 	private DataSource dataSource;
 
 //	@Autowired
 //	private BCryptPasswordEncoder bcrypt;
-	
+
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 		return bCryptPasswordEncoder;
 	}
-	
+
 	@Bean
 	@Override
 	protected AuthenticationManager authenticationManager() throws Exception {
 		return super.authenticationManager();
 	}
-	
+
 //	@Autowired
 //	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 //		auth.userDetailsService(userDetailsService).passwordEncoder(bcrypt);
 //	}
-	
+
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.sessionManagement()
@@ -71,14 +71,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.csrf()
 		.disable();
 	}
-	
+
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
 		converter.setSigningKey(signinKey);
 		return converter;
 	}
-	
+
 	@Bean
 	public TokenStore tokenStore() {
 		// in memory
@@ -86,7 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// on bdd
 		//return new JdbcTokenStore(this.dataSource);
 	}
-	
+
 	@Bean
 	@Primary
 	public DefaultTokenServices tokenServices() {
@@ -95,5 +95,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		defaultTokenServices.setSupportRefreshToken(true);
 		defaultTokenServices.setReuseRefreshToken(false);
 		return defaultTokenServices;
-	}	
+	}
 }

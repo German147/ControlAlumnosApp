@@ -17,21 +17,21 @@ public class AuthException implements AuthenticationEntryPoint {
 	@Override
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {
-		
+
 		final Map<String, Object> mapException = new HashMap<>();
-		
+
 		mapException.put("error", "401");
 		mapException.put("message", "No estas autorizado para acceder a este recurso");
 		mapException.put("exception", "No autorizado");
 		mapException.put("path", request.getServletPath());
 		mapException.put("timestamp", LocalDateTime.now());
-		
+
 		response.setContentType("application/json");
 		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-		
+
 		final ObjectMapper mapper = new ObjectMapper();
 		mapper.writeValue(response.getOutputStream(), mapException);
 	}
 
-	
+
 }

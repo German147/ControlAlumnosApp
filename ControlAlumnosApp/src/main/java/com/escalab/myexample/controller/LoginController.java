@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/login")
 public class LoginController {
-	
+
 	@Autowired
 	private ILoginService service;
-	
+
 	@Autowired
 	private IResetTokenService tokenService;
 
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
-	
 
-	
+
+
 	@GetMapping(value = "/restablecer/verificar/{token}")
 	public ResponseEntity<Integer> restablecerClave(@PathVariable("token") String token) {
 		int rpta = 0;
@@ -42,7 +42,7 @@ public class LoginController {
 		}
 		return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
 	}
-	
+
 	@PostMapping(value = "/restablecer/{token}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Integer> restablecerClave(@PathVariable("token") String token, @RequestBody String clave ) {
 		int rpta = 0;

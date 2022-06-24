@@ -14,18 +14,12 @@ public class LlamadosDeAtencion {
     private Integer llamadoDeAtencion_id;
 
     @Column(name = "numeroDeLlamadosdeAtencion", length = 50)
-    @Size(min = 4, max = 50, message = "Debes ingresar la cantidad de llamados de atencion ya apercibidos")
-    @NotEmpty
     private int numeroDeLlamadosdeAtencion;
 
     @Column(name = "motivo", length = 50)
-    @Size(min = 4, max = 50, message = "Debes ingresar el motivo del llamado de atencion")
-    @NotEmpty
     private String motivo;
 
-    @Column(name = "TutoresAvisados", length = 50)
-    @Size(min = 4, max = 50, message = "Debes ingresar si fue avisado el tutor")
-    @NotEmpty
+    @Column(name = "TutoresAvisados")
     private boolean estaAvisadoEltutor;
 
     public Integer getLlamadoDeAtencion_id() {
