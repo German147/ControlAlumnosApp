@@ -42,10 +42,13 @@ Here is the diagram of relation between classes
 ![Diagrama de realciones](https://user-images.githubusercontent.com/69442805/171068270-d32b1faf-5358-4c8b-84d7-907cbdb74eed.png)
 
 
-### Swagger Screen shoot
+### Swagger Screen shot
 
 ![image](https://user-images.githubusercontent.com/69442805/171069084-7bd7a222-15fa-4cbc-9359-aae38cb80fcd.png)
 
+### RESTful Stress screen shot
+![Setting Prueba de Stress](https://user-images.githubusercontent.com/69442805/175750755-457c5703-4408-42b0-acff-21e7f28799b9.png)
+![Resultado prueba Stress](https://user-images.githubusercontent.com/69442805/175750762-9f1d9c62-d37f-46e7-a405-647f35e22b0e.png)
 
 ## Setup
 To run this project, install it locally, open it into your IDE, go to the properties file and then
