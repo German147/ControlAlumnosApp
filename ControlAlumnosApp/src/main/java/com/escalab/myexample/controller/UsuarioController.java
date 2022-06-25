@@ -19,7 +19,7 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @GetMapping("/usuario")
+    @GetMapping("/usuarios")
     public @ResponseBody
     List<Usuario> finfAllUuarios(){
         return usuarioService.findAll();
